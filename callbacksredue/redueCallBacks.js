@@ -111,10 +111,41 @@ contains(names, 'Colt', function(result){
     //Code Here for uniq
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var uniq = function(arr, callBack) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr.length; j++) {
+      if (j !== i) {
+         if (arr[j] === arr[i]) {
+        arr.splice(i, 1);
+       }
+      }
+    } 
+  } 
+ 
+  callBack(arr);
+}
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 
+//indexOf version
+
+var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+var uniq = function(arr, callBack) {
+var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (newArr.indexOf(arr[i]) === -1) { //-1 is like saying it doesnt exist but since there are multiple indexes with the same value they will already exist and thus not get pushed to the new array. basically it is only pushing what does not exist. The -1 accounts for values that dont exist
+      newArr.push(arr[i]) // you are pushing the new values at index i that is conditional upon the if statement so only the values that do not exist
+    }
+  } callBack(newArr);
+}
+
+uniq(names, function(uniqArr){
+  console.log('The new names array with all the duplicate items removed is ', uniqArr);
+});
 
 
 
@@ -127,6 +158,10 @@ uniq(names, function(uniqArr){
     //Code Here for each
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+
+
+
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
 });
