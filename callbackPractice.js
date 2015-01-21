@@ -126,12 +126,13 @@ if (arr.indexOf(arr[i]) < 0) {
   var uniq = function(arr, callback) {
    var newArr = [];
    for (var i = 0; i < arr.length; i++) {
-      if (newArr.indexOf(arr[i]) === -1) 
-        arr.push(arr[i]);
-      }
+      if (newArr.indexOf(arr[i]) === -1) { // if the new array doesnt have the value at index i in arr push it to newArr -1 represent it not being there since 'Cahlan' is in two places it will push only one of them to the newArr
+          newArr.push(arr[i]) 
+       }
+      } callback(newArr);
      }
-    return callback(newArr);
-   };
+  
+  
 
   uniq(names, function(uniqArr){
     console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -192,7 +193,7 @@ var users = [
 ];
  var getUserById = function(theUser, person, callback) {
    for (var i = 0; i < theUser.length; i++) {
-     if (theUser[i].id === person) { // basically saying if the user at index i searching by id matches the string id of '16t' then execute the call back
+     if (theUser[i].id === person) { // basically saying if the user at index i searching by id (.id) matches the string id of '16t' then execute the call back
       callback(theUser[i]);
      }
    }
